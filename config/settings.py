@@ -10,27 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
-import os
 from pathlib import Path
-from utils.env_list_parser import parse_env_list
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Load .env on development only
-if (os.getenv("DJANGO_ENV") != "production"):
-    from dotenv import load_dotenv
-    load_dotenv(os.path.join(BASE_DIR, ".env"))
-
 # Attempts to load secret key from the .env file
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
-if not SECRET_KEY:
-    raise ValueError("DJANGO_SECRET_KEY is not set!")
+SECRET_KEY = "lhnn6u0qwa^qzl6pl=mudnnpt^m&ga+j8m!wpr5-%=k$91k4tc" # It's a nightmare to deploy in pythonanywhere, I'd better use vercel or render next time. I intentionally did not put any .env configuration
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False").lower() == "true"
-ALLOWED_HOSTS = parse_env_list("ALLOWED_HOSTS")
+DEBUG = False
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
