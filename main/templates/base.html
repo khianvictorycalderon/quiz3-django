@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <script src="{% static 'js/tailwind-3.4.17.js' %}"></script>
+    </head>
+    <body class="bg-neutral-900 text-neutral-100">
+        <main
+            class="min-h-screen w-full flex items-center justify-center"
+        >
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>
